@@ -21,7 +21,8 @@ export async function processBakeryImage(
   logoBase64?: string,
   color: string = "Ivory White"
 ): Promise<string> {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  // Replace the old 'const ai' line with this one:
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GOOGLE_API_KEY });
   
   let environmentPrompt = PRESET_PROMPTS[preset] || PRESET_PROMPTS['ai-magic'];
   
