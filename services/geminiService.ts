@@ -2,7 +2,7 @@
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 import { PresetType } from "../types";
 
-const MODEL_NAME = 'gemini-2.5-flash-image';
+const MODEL_NAME = 'gemini-1.5-flash';
 
 const PRESET_PROMPTS: Record<PresetType, string> = {
   'ai-magic': "Professional editorial product photography. High-end Pâtisserie Masterpiece. Creative and artistic luxury bakery setting with dramatic soft lighting and golden accents.",
