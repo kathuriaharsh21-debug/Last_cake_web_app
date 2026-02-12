@@ -2,7 +2,7 @@
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 import { PresetType } from "../types";
 
-const MODEL_NAME = 'gemini-1.5-flash';
+const MODEL_NAME = 'gemini-2.5-flash-image';
 
 const PRESET_PROMPTS: Record<PresetType, string> = {
   'ai-magic': "Professional editorial product photography. High-end Pâtisserie Masterpiece. Creative and artistic luxury bakery setting with dramatic soft lighting and golden accents.",
@@ -22,7 +22,7 @@ export async function processBakeryImage(
   color: string = "Ivory White"
 ): Promise<string> {
   // Replace the old 'const ai' line with this one:
-const ai = new GoogleGenAI({ apiKey: "AIzaSyAp5dB-VwBGMWOoPBAWxlcpTrIP-2_iMwI" });
+  const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GOOGLE_API_KEY });
   
   let environmentPrompt = PRESET_PROMPTS[preset] || PRESET_PROMPTS['ai-magic'];
   
