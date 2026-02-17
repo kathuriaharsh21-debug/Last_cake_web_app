@@ -1,7 +1,20 @@
-export async function processImageWithBackend(file: File, preset: string) {
+export async function processImageWithBackend(
+  file: File,
+  preset: string,
+  logoBase64?: string,
+  selectedColor?: string
+) {
   const formData = new FormData();
   formData.append("file", file);
   formData.append("preset", preset);
+
+  if (logoBase64) {
+    formData.append("logoBase64", logoBase64);
+  }
+
+  if (selectedColor) {
+    formData.append("selectedColor", selectedColor);
+  }
 
   const res = await fetch("https://la-paris-editor.onrender.com/enhance", {
     method: "POST",
@@ -9,7 +22,8 @@ export async function processImageWithBackend(file: File, preset: string) {
   });
 
   if (!res.ok) {
-    throw new Error("Backend processing failed");
+    const text = await res.text();
+    throw new Error(text || "Backend processing failed");
   }
 
   return await res.json();
